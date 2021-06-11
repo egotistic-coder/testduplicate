@@ -17,6 +17,10 @@ app.add_middleware(
 )
 app.add_middleware(GZipMiddleware)
 
+@app.get("/")
+async def root():
+    return {"Welcome to Fast API on Azure. Navigate to /docs to see the use age"}
+
 @app.on_event("startup")
 async def startup():
     await dbconnect.database.connect()
